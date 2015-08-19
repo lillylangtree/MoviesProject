@@ -29,7 +29,7 @@ angular.module('movieDBControllers',[])
           console.log('error', error)
         });
 })
-.controller('MovieNowPlayingController',function($scope, MovieListService,myMovieConfig) {
+.controller('MovieNowPlayingController',function($scope, $location, MovieListService,myMovieConfig) {
  $scope.loading = true;
  $scope.currentNav = 3;
  $scope.title = 'Now Playing Movies'
@@ -41,7 +41,8 @@ angular.module('movieDBControllers',[])
       }
       ).catch(
         function(error) { 
-          console.log('error', error)
+          console.log('error', error);
+          $location.path('/error/'+error.data.status_message+'/'+error.status)
         });
 })
 .controller('MovieTopRatedController',function($scope, MovieListService,myMovieConfig) {
@@ -75,7 +76,8 @@ angular.module('movieDBControllers',[])
           console.log('error', error)
         });
 })
-.controller('MovieTestListController',function($scope, MovieListService) {
+.controller('MovieErrorController',function($scope, $routeParams) {
 // 
-   $scope.movieList = MovieListService.getTestList();
+   $scope.message = $routeParams.message;
+   $scope.status = $routeParams.status;
 });

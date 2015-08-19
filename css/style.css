@@ -21,8 +21,16 @@ body {
   background: radial-gradient(#fff, #dac4cd);
 }
 
+div.homePage {
+  background: transparent; 
+  font-size: large;
+}
+div.homePage h1{
+  background: transparent; 
+  font-size: 300%;
+}
 /* bootstrap overrides*/
-.redBorder {border-left: 1px solid red;}
+.redBorder {border: 3px outset red;}
 movie-info-box { border: 2px solid pink;}
 
 div.repeat:nth-child(6n+0):after { display: table; content: " "; clear: both}
@@ -37,6 +45,9 @@ div.repeat:nth-child(6n+0):after { display: table; content: " "; clear: both}
 .list-inline > li.selected { border-bottom: 1px solid red;}
 
 a.navbar-brand { padding: 0px; padding-left: 20px;}
+
+.btnLink { border: 3px solid grey; padding: 5px; margin: 60px; font-size: large; text-decoration: none; color: grey;}
+.btnLinkHover a:hover { color: lightgrey; text-decoration: none;}
 
 h1,h2,h3,h4 { margin-top: 0px }
 

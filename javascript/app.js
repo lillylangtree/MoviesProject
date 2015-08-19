@@ -33,5 +33,9 @@ angular.module('moviesDBApp', ['ngRoute','movieDBControllers','movieDBDirectives
 			templateUrl: "templates/movies.html",
 			controller: "MovieNowPlayingController"
 		})
+		  .when("/error/:message/:status", {
+			templateUrl: "templates/error.html",
+			controller: 'MovieErrorController'
+		})
 		  .otherwise({redirectTo: '/'}); 
 	});

@@ -2,11 +2,14 @@
       <movie-nav current-nav='currentNav'></movie-nav>
       <div class='container'>
         <div class='jumbotron' ng-show='loading'><h1>Loading.....</h1></div>
-        <h1>{{title}}</h1>
+        <h1>{{title}} <span>(top rated highlighted)</span></h1>
         <div class='row' style='justify-content: center;  '>
         <div class='repeat' ng-repeat="movie in movieList">
-          <a href='#/movie/{{movie.id}}'>
+           <div class="col-md-2">
+              <a href='#/movie/{{movie.id}}'>
+           
             <movie-info-box info="movie"></movie-info-box>
+          </div>
           </a>
         </div>
       </div>
