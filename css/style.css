@@ -1,0 +1,89 @@
+.ng-invalid.ng-dirty {
+    border-color: red;
+}
+
+.ng-valid.ng-dirty {
+    border-color: green;
+}
+
+hr { border-top: 2px solid black}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  color: #435757;
+  background: radial-gradient(#fff, #dac4cd);
+}
+
+/* bootstrap overrides*/
+.redBorder {border-left: 1px solid red;}
+movie-info-box { border: 2px solid pink;}
+
+div.repeat:nth-child(6n+0):after { display: table; content: " "; clear: both}
+
+.list-inline>li {padding: 10px 15px;}
+
+.list-inline>li a {font-size: large;}
+
+.list-inline > li > a:hover { background-color: lightgrey; text-decoration: none;}
+.list-inline > li > a.active { background-color: #337AB7; color: white;}
+
+.list-inline > li.selected { border-bottom: 1px solid red;}
+
+a.navbar-brand { padding: 0px; padding-left: 20px;}
+
+h1,h2,h3,h4 { margin-top: 0px }
+
+
+form.viewType  input {
+  position: absolute;
+  left: -9999px;
+}
+
+form.viewType  label {
+  display: inline-block;
+  position: relative;
+  margin: 20px;
+  padding: 15px 30px 15px 62px;
+  border: 3px solid #fff;
+  border-radius: 100px;
+  color: #fff;
+  background-color: #6a8494;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .2s, box-shadow .2s;
+}
+
+form.viewType > label::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  width: 32px;
+  border: 3px solid #fff;
+  border-radius: 100px;
+  transition: background-color .2s;
+}
+
+
+form.viewType  label:hover, form.viewType input:focus + label {
+  box-shadow: 0 0 20px rgba(0, 0, 0, .6);
+}
+
+form.viewType  input:checked + label {
+  background-color: #ab576c;
+}
+
+form.viewType  input:checked + label::before {
+  background-color: #fff;
+}

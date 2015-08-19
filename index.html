@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app='moviesDBApp'>
+  <head>
+      <title>Angular Movies DB Project</title>
+	<link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+	
+  <script src="javascript/vendor/angular.min.js"></script>
+	<script src="javascript/vendor/angular-route.min.js"></script>
+	<script src="javascript/vendor/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#/home">
+              <img alt="Brand" src="images/movies-logo-1.gif" style='height: 46px' class='img-responsive'>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div ng-view></div>
+  </body>
+
+  <script src='javascript/app.js'></script>
+  <script src='javascript/controller.js'></script>
+  <script src='javascript/directive.js'></script>
+  <script src='javascript/service.js'></script>
+</html>
