@@ -7,22 +7,19 @@ It uses the MoviesDB Api as its basis see http://docs.themoviedb.apiary.io/#
 
 To clone the application use the usual git clone command from a command tool
 
-1/ Create a new folder 
+1/ git clone https://github.com/lillylangtree/mdb-final.git
 
-2/ cd to that folder
+2/ the clone will create a mdb-final folder in the current folder
 
-3/ git clone https://github.com/lillylangtree/mdb-final.git
-
-4/ the clone will create a mdb-final folder in the current folder
-
-The application includes a package.json file wihich will allow you to run a 
+The application includes a package.json file which will allow you to run a 
 local http server. You need to have npm installed to do this.
 
 cd to mdb-final folder, the git clone creates this folder for you
 
 1/ issue command npm start
 
-2/ in a browser navigate to localhost:8000
+2/ in a browser navigate to localhost:8000 (you can change the port setting
+   in the package.json file if you wish)
 
 3/ Home page should appear
 
