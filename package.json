@@ -3,7 +3,7 @@
   "private": false,
   "version": "1.0.0",
   "description": "A tutorial using the movies db api",
-  "repository": "https://github.com/lillylangtree/ui-web-comp-directives.git",
+  "repository": "https://github.com/lillylangtree/mdb-final.git",
   "license": "MIT",
   "devDependencies": { 
     "http-server": "^0.6.1",
