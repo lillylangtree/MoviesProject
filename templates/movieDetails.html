@@ -12,6 +12,28 @@
         <h3>Tag Line</h3>
         <p>{{movie.tagline}}</p>
         <p class="" style="color: black">Released: {{movie.release_date | date: 'mediumDate'}}</p>
+        <hr>
+        <div class='row' ng-show='!rottenError'> 
+           <h3 style='padding-left: 15px'>Rotten Results</h3>         
+          <div class="col-md-4">
+            <p style='font-size: large'>TomatoMeter: {{rotten.tomatoMeter}}%</p>
+            <p>Average Rating: {{rotten.tomatoRating}}</p>
+            <p>Fresh: {{rotten.tomatoFresh}} / Rotten: {{rotten.tomatoRotten}}</p>
+            <p>Reviews: {{rotten.tomatoReviews}}</p>
+          </div>
+          <div class="col-md-4">
+            <h4>Critics Consensus</h4>            
+            <p>{{rotten.tomatoConsensus}}</p>
+          </div>
+          <div class="col-md-4">
+            <p style='font-size: large'>Audience Score: {{rotten.tomatoUserMeter}}%</p>
+            <p>Average Rating: {{rotten.tomatoUserRating}}/5</p>
+            <p>Reviews: {{rotten.tomatoUserReviews}}</p>
+          </div>
+        </div>
+        <div class='row' ng-show='rottenError'> 
+          <p style='font-size: large'>{{rottenMessage}}</p>
+        </div>
       </div> 
     </div>
     <br/><br/>  
