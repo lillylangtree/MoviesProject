@@ -86,7 +86,8 @@ angular.module('movieDBControllers',[])
           console.log("in movie by id next then");
           // returning results from previous then
           //$scope.movie = result.data; /*res.filter(function(val){return val !== null});;*/
-          url = 'http://www.omdbapi.com/?i=' + result.imdb_id + '&r=json&tomatoes=true'
+          var aurl = 'https://www.omdbapi.com/?i=' + result.imdb_id + '&r=json&tomatoes=true';
+          url = myMovieConfig.rottenUri + '?i=' + result.imdb_id + '&r=json&tomatoes=true';
           return MovieListService.getById(url);
           }
       ,
@@ -103,8 +104,8 @@ angular.module('movieDBControllers',[])
           // returning results from previous then
           //$scope.movie = result.data; /*res.filter(function(val){return val !== null});;*/
           $scope.rotten = result.data;
-          }
-      ,
+          })
+      .catch(
         function(error) { 
           console.log('error', error)
           // id error show error message on screen
