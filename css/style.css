@@ -33,6 +33,13 @@ div.homePage h1{
 .redBorder {border: 3px outset red;}
 movie-info-box { border: 2px solid pink;}
 
+.nav li a {padding: 0px; margin-left: 20px; outline: none;}
+.nav li a:active {outline: none;}
+.nav li a:focus {outline: none;}
+.nav li a button:focus {outline: none;}
+.nav li a button:active {outline: none;}
+.nav li a button {margin-left: 8px; margin-right:8px;}
+
 div.repeat:nth-child(6n+0):after { display: table; content: " "; clear: both}
 
 .list-inline>li {padding: 10px 15px;}
