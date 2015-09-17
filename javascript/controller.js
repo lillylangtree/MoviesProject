@@ -2,11 +2,18 @@ angular.module('movieDBControllers',[])
 .controller('MovieListController',function($scope, MovieListService,myMovieConfig) {
  $scope.loading = true;
  $scope.currentNav = 1;
+ $scope.page = 1;
  $scope.title = 'Popular Movies'
- var url = myMovieConfig.moviesEndpoint + '/popular?api_key=' + myMovieConfig.apiKey;
- MovieListService.getList(url).then(
+ getMovies();
+ 
+ function getMovies() {
+	 var url = myMovieConfig.moviesEndpoint + '/popular?'+'page='+$scope.page + '&api_key=' + myMovieConfig.apiKey;
+	 
+	 MovieListService.getList(url).then(
       function(result){
           $scope.movieList = result.data.results; /*res.filter(function(val){return val !== null});;*/
+		  $scope.page=result.data.page;
+		  $scope.pages=result.data.total_pages;
           $scope.loading = false;
       }
       ).catch(
@@ -14,6 +21,15 @@ angular.module('movieDBControllers',[])
           console.log('error', error);
           $location.path('/error/'+error.data.status_message+'/'+error.status);
         });
+	}
+ $scope.nextPage = function(){
+	$scope.page++;
+	getMovies();
+ }
+ $scope.prevPage = function(){
+	$scope.page--;
+	getMovies();
+ }
 })
 .controller('MovieUpcomingController',function($scope, MovieListService,myMovieConfig) {
  $scope.loading = true;

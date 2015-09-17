@@ -1,15 +1,15 @@
 
 <div class="panel panel-default poster" style="margin-bottom: 14px;  
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-transition: all 0.3s ease-out;">
+												box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+												transition: all 0.3s ease-out;">
+	<div style='position: relative; width: 100%'>										
 	<img class='img-responsive' ng-src="http://image.tmdb.org/t/p/w370/{{movie.poster_path}}" style="">
-	<div class="panel-heading" style="background-color: #B82266;color: #ffffff ;
-					background-repeat: repeat-x;
-					background-image: linear-gradient(to bottom, #B82266 0px, #951C55 100%);">
-		<h3 class="panel-title" style="color: #FDADBA;
-								white-space: nowrap;
-								overflow: hidden;">{{movie.title}}</h3>
+	<div class="panel-heading" style="background-color: #B82266; opacity: 0.8; color: #ffffff ;
+										background-repeat: repeat-x;
+										background-image: linear-gradient(to bottom, #B82266 0px, #951C55 100%);
+										position: absolute; bottom: 0px;display: inline-block;width: inherit;">
+		<h3 class="panel-title" style="color: #fff; font-weight: bold">{{movie.title}}</h3>
 	</div >
-
-	<div class="panel-footer" style="color: black">From: {{movie.release_date | date: 'mediumDate'}}</div>
+	</div>
+	<div class="panel-footer .btnLinkHover" style="color: black">From: {{movie.release_date | date: 'mediumDate'}}</div>
 </div>

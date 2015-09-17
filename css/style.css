@@ -1,12 +1,3 @@
-.ng-invalid.ng-dirty {
-    border-color: red;
-}
-
-.ng-valid.ng-dirty {
-    border-color: green;
-}
-
-hr { border-top: 2px solid black}
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -14,12 +5,15 @@ hr { border-top: 2px solid black}
 
 html {
   min-height: 100%;
+  font-size: 1em;
 }
 
 body {
   color: #435757;
   background: radial-gradient(#fff, #dac4cd);
 }
+
+hr { border-top: 2px solid black}
 
 div.homePage {
   background: transparent; 
@@ -31,77 +25,77 @@ div.homePage h1{
 }
 /* bootstrap overrides*/
 .redBorder {border: 3px outset red;}
-movie-info-box { border: 2px solid pink;}
 
-.nav li a {padding: 0px; margin-left: 20px; outline: none;}
+movie-info-box { border: 2px solid pink;}
+movie-nav { margin-bottom: 20px;}
+
+.nav li a {padding: 0px; margin-left: 20px; outline: none; }
 .nav li a:active {outline: none;}
 .nav li a:focus {outline: none;}
 .nav li a button:focus {outline: none;}
 .nav li a button:active {outline: none;}
-.nav li a button {margin-left: 8px; margin-right:8px;}
+.nav li a button {margin-left: 8px; margin-right:8px; }
+
+.navbar-brand { height: auto}
+.navbar-nav { margin-top:5px;}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+background-color: #222 }
 
 div.repeat:nth-child(6n+0):after { display: table; content: " "; clear: both}
 
-.list-inline>li {padding: 10px 15px;}
+.list-inline {margin-left: 20px ; margin-bottom: 20px;}
 
-.list-inline>li a {font-size: large;}
+.list-inline>li {padding: 0px 0px;  padding-bottom: 0px;}
 
+.list-inline>li a {font-size: 3vh; font-size: 3vmax; border-left: 0px solid #CCC; padding-left: 10px;padding-right: 10px;
+				box-shadow: 1px 0px rgba(83, 109, 141, 0.7) inset;}
+				
 .list-inline > li > a:hover { background-color: lightgrey; text-decoration: none;}
 .list-inline > li > a.active { background-color: #337AB7; color: white;}
 
-.list-inline > li.selected { border-bottom: 1px solid red;}
-
+.list-inline > li.selected { border-bottom: 3px solid red;}
+.list-inline > li.selected:first-child > a {
+    border-left: medium none; padding-left: 0px;box-shadow: 0px 0px}
+	
 a.navbar-brand { padding: 0px; padding-left: 20px;}
+a > .btn {font-size: 3vh; font-size: 3vmax;}
 
 .btnLink { border: 3px solid grey; padding: 5px; margin: 60px; font-size: large; text-decoration: none; color: grey;}
-.btnLinkHover a:hover { color: lightgrey; text-decoration: none;}
+ a:hover { color: black; text-decoration: none;}
+ 
+div.nextPrev  i { cursor: pointer;font-size: 2em; color: blue;}
 
 h1,h2,h3,h4 { margin-top: 0px }
 
 
-form.viewType  input {
-  position: absolute;
-  left: -9999px;
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
 }
 
-form.viewType  label {
-  display: inline-block;
-  position: relative;
-  margin: 20px;
-  padding: 15px 30px 15px 62px;
-  border: 3px solid #fff;
-  border-radius: 100px;
-  color: #fff;
-  background-color: #6a8494;
-  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-  white-space: nowrap;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color .2s, box-shadow .2s;
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
 }
 
-form.viewType > label::before {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 10px;
-  width: 32px;
-  border: 3px solid #fff;
-  border-radius: 100px;
-  transition: background-color .2s;
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+   div.repeat:nth-child(3n+0):after { display: table; content: " "; clear: both}
 }
 
-
-form.viewType  label:hover, form.viewType input:focus + label {
-  box-shadow: 0 0 20px rgba(0, 0, 0, .6);
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  div.repeat:nth-child(2n+0):after { display: table; content: " "; clear: both}
+  .navbar-brand > img {display: none;}
 }
 
-form.viewType  input:checked + label {
-  background-color: #ab576c;
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  div.repeat:nth-child(2n+0):after { display: table; content: " "; clear: both}
+  .navbar-brand > img {display: none;}
 }
-
-form.viewType  input:checked + label::before {
-  background-color: #fff;
 }
