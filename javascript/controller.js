@@ -79,17 +79,19 @@ angular.module('movieDBControllers',[])
           $location.path('/error/'+error.data.status_message+'/'+error.status);
         });
 })
-.controller('MovieDetailsController',function($scope, $routeParams, MovieListService, myMovieConfig) {
+.controller('MovieDetailsController',function($scope, $routeParams, MovieListService, myMovieConfig,$http,$sce,TrailerService) {
 // 
    $scope.title = 'Movie Details';
    $scope.rottenError = false;
+   $scope.trailer=false;
    var id = $routeParams.movieId;
    var url = myMovieConfig.moviesEndpoint + '/' + id + '?api_key=' + myMovieConfig.apiKey;
    MovieListService.getById(url).then(
       function(result){
-          console.log("in movie by id controller get then");
-          $scope.movie = result.data; /*res.filter(function(val){return val !== null});;*/
-          return(result.data);
+          var movie=result.data;
+          $scope.movie = movie; 
+          url = myMovieConfig.rottenUri + '?i=' + movie.imdb_id + '&r=json&tomatoes=true';
+          return MovieListService.getById(url);
           }
       ,
         function(error) { 
@@ -98,41 +100,39 @@ angular.module('movieDBControllers',[])
           }
       )
       .then(
-        function(result){
-          console.log("in movie by id next then");
+        function(result){          
           // returning results from previous then
-          //$scope.movie = result.data; /*res.filter(function(val){return val !== null});;*/
-          var aurl = 'https://www.omdbapi.com/?i=' + result.imdb_id + '&r=json&tomatoes=true';
-          url = myMovieConfig.rottenUri + '?i=' + result.imdb_id + '&r=json&tomatoes=true';
-          return MovieListService.getById(url);
-          }
-      ,
-        function(error) { 
-          console.log('error', error)
-          // id error show error message on screen
-          $scope.rottenError = true;
-          $scope.rottenMessage = 'No Rotten Data Available'
-          }
-        )
-      .then(
-        function(result){
-          console.log("in movie by id next then with imdb id");
-          // returning results from previous then
-          //$scope.movie = result.data; /*res.filter(function(val){return val !== null});;*/
           $scope.rotten = result.data;
-          })
+          console.dir(result.data)
+           //This is the callback function
+          var setData = function(trailer) {
+                $scope.trailerSrc = $sce.trustAsResourceUrl("//v.traileraddict.com/" + trailer);
+            }                 
+          TrailerService.get(setData,$scope.rotten.imdbID.slice(2)); //service requires callback
+          }      
+       )
       .catch(
         function(error) { 
           console.log('error', error)
-          // id error show error message on screen
           $scope.rottenError = true;
           $scope.rottenMessage = 'No Rotten Data Available'
           }
         );
-
 })
 .controller('MovieErrorController',function($scope, $routeParams) {
 // 
    $scope.message = $routeParams.message;
    $scope.status = $routeParams.status;
+})
+.controller('MenuController',function($scope, $location, $routeParams) {
+// 
+   $scope.path = $location.path();
+   $scope.menuClass = function(page) {
+    var current = $location.path().substring(1);
+    return page === current ? "active" : "";
+  };
+//   $scope.showMovies = function(){
+//	return ($scope.path == '/popular' || $scope.path == '/topRated' || $scope.path == '/nowPlaying' 
+//		|| $scope.path == '/upcoming')
+//   }
 });

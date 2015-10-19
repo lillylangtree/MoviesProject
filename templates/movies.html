@@ -1,9 +1,9 @@
 
 <div class='container-fluid'>
-	<movie-nav current-nav='currentNav'></movie-nav> 
+	<!--<movie-nav current-nav='currentNav'></movie-nav> -->
 	<div class='row col-md-12 col-sm-12 col-xs-12'>
-		<div class='jumbotron' ng-show='loading'><h1>Loading.....</h1></div>
-		<h1>{{title}} <span>(top rated highlighted)</span></h1>
+		<div  ng-show='loading'><h1>Loading.....</h1></div>
+		<h3>{{title}} <span>(top rated highlighted)</span></h3>
 	</div>
 	<div class='row' style='justify-content: center;  '>
 		<div class='repeat' ng-repeat="movie in movieList">
@@ -19,7 +19,7 @@
 	ng-hide="page === 1"
 	ng-click="prevPage()"></i>
 	
-    <span style='display: inline-block; font-size: 2em;padding: 1em; padding-bottom: 1px;padding-top: 1px;'>
+    <span style='position: relative; bottom: 0.4em;font-size: 2em;padding: 1em; padding-bottom: 1px;padding-top: 1px;'>
 	Showing Page: {{page}} of {{pages}}</span>
 	<i  class='glyphicon glyphicon-circle-arrow-right' ng-click="nextPage()"></i>
 	</div>
