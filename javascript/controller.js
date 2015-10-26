@@ -79,7 +79,7 @@ angular.module('movieDBControllers',[])
           $location.path('/error/'+error.data.status_message+'/'+error.status);
         });
 })
-.controller('MovieDetailsController',function($scope, $routeParams, MovieListService, myMovieConfig,$http,$sce,
+.controller('MovieDetailsController',function($scope, $location,$routeParams, MovieListService, myMovieConfig,$http,$sce,
   TrailerService) {
 // 
    $scope.title = 'Movie Details';
@@ -109,7 +109,7 @@ angular.module('movieDBControllers',[])
           
           //return NewTrailerService.get($scope.rotten.imdbID.slice(2));
           TrailerService.get($scope.rotten.imdbID.slice(2),function(trailer) {                               
-                $scope.trailerSrc = $sce.trustAsResourceUrl("http://v.traileraddict.com/" + trailer);
+                $scope.trailerSrc = $sce.trustAsResourceUrl("https://v.traileraddict.com/" + trailer);
                 console.log($scope.trailerSrc)
                }); //service requires callback
 
@@ -120,17 +120,6 @@ angular.module('movieDBControllers',[])
           //won't route to error page as we have the movie data. Set flag to not show rotten data
           $scope.rottenError = true;
           $scope.rottenMessage = 'No Rotten Data Available';
-          }
-      )
-      .then(
-        function(result){          
-          // returning results from previous then
-          console.dir(result.data)
-          }      
-       ,
-        function(error) { 
-          //won't route to error page as we have the movie data. Set flag to not show rotten data
-          console.log(error);
           }
       )
       .catch(

@@ -4,7 +4,7 @@
     <div class='row'>          
       <div class=" col-md-3 col-sm-3 col-xs-12">
         <img ng-show='!rottenError' ng-src="{{rotten.Poster}}" class='img-responsive {{animateIn}}'>
-        <img ng-show='rottenError' ng-src="http://image.tmdb.org/t/p/w370/{{movie.poster_path}}" class='img-responsive {{animateIn}}'>
+        <img ng-show='rottenError' ng-src="https://image.tmdb.org/t/p/w370/{{movie.poster_path}}" class='img-responsive {{animateIn}}'>
       </div>
       <div  class="col-md-7 col-sm-9 col-xs-12">
         <h1 class="">{{movie.title}}</h1>
@@ -26,12 +26,7 @@
             <button class='btn btn-primary' ng-click="showTrailer()">Show Trailer</button>
           </div>
         </div>
-        <div class="row" ng-show="trailer">
-          <hr/>
-           <div class="col-md-8 col-md-offset-2">
-          <iframe  src="{{trailerSrc}}" width="560" height="315" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no" autoplay="false"></iframe>
-          </div>
-        </div>
+        
         <hr/>
         <div id='rotten' class='row' ng-show='!rottenError'> 
            <h3 >Rotten Results</h3>  
