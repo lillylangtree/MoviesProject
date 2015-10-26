@@ -1,5 +1,5 @@
 // defining the app module of the project
-angular.module('moviesDBApp', ['ngSanitize','ngRoute','ngAnimate','movieDBControllers','movieDBDirectives','movieDBServices'])
+angular.module('moviesDBApp', ['ngSanitize','ngRoute','UIWebComp.directives','TrailerMovieServices','movieDBControllers','movieDBDirectives','movieDBServices'])
 .constant("myMovieConfig", {
         "moviesEndpoint" : "https://api.themoviedb.org/3/movie",
         "apiKey": "35e16679c616a21b9ddebb66272c5902",
@@ -33,6 +33,10 @@ angular.module('moviesDBApp', ['ngSanitize','ngRoute','ngAnimate','movieDBContro
 		  .when("/nowPlaying", {
 			templateUrl: "templates/movies.html",
 			controller: "MovieNowPlayingController"
+		})
+		  .when("/about", {
+			templateUrl: "templates/about.html",
+			controller: "AboutController"
 		})
 		  .when("/error/:message/:status", {
 			templateUrl: "templates/error.html",

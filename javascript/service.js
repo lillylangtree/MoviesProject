@@ -1,25 +1,4 @@
 angular.module('movieDBServices',[])
-.factory('TrailerService', ['$http',function($http){
-    
-       return {
-           get: function(callback,imdbId){
-                var xmlSource = "http://api.traileraddict.com/?imdb=" + imdbId + "&count=1&width=680"
-                var yqlURL = [
-                    "http://query.yahooapis.com/v1/public/yql",
-                    "?q=" + encodeURIComponent("select * from xml where url='" + xmlSource + "'"),
-                    "&format=xml&callback=?"
-                ].join("");
-
-            // Now do the AJAX heavy lifting        
-                $.getJSON(yqlURL, function(data){
-                    xmlContent = $(data.results[0]);
-                    var trailer = $(xmlContent).find("trailer_id").text();
-                    console.log(trailer);
-                    callback(trailer);
-                });
-              } 
-          } 
-    }])
 .factory('MovieListService',function($http) {
 //  
      $http.defaults.useXDomain = true;

@@ -1,12 +1,35 @@
+<style>
+.box {
+    
+    background-color: #0000FF;
+    opacity: 0;
+     -webkit-transition: background-color 2s, -webkit-transform 2s;
+    
+}
+#titles:hover p.box {
+    background-color: #FFCCCC;
+     opacity: 1;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    transition: opacity 2s, background-color 2s, transform 2s;
+}
 
+
+#titles:hover a {
+    color: red;
+}
+</style>
 <div class='container'>
+
 	<div class='homePage btnLinkHover' style='text-align: center'>
-		  <img src='images/movies-logo-1.gif'/>
-	      <h1>Welcome To The Movies</h1>	  
-	      <p>Find all the latest and most poular movies out right now. </p>
-	      <p>See whats top rated and upcoming in the near future !</p>  
-	      <div style='margin-top: 30px'>  
-	      <a class='btnLink' href='#/popular'>Enter Movies</a>	 
+		  <img class='animated bounceInDown' src='images/movies-logo-1.gif' style='text-align: center'/>
+		  <div id='titles'>
+		      <h1>Welcome To The Movies</h1>	  
+		      <p class=''>Find all the latest and most poular movies out right now. </p>
+		      <p>See whats top rated and upcoming in the near future !</p>  
+		      <div style='margin-top: 30px'> 
+		      </div> 
+		      <a class='btnLink' href='#/popular'>Enter Movies</a>	 
 	      </div> 	  
 	</div>
 </div>

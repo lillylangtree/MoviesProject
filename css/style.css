@@ -113,6 +113,14 @@ div#rotten > p { padding-left: 30px};
 
   .navbar-brand > img {display: none;}
 }
+
+.fade.in { opacity:1; display:block; overflow-x: hidden;overflow-y: auto;}
+.fade.out { display:none;}
+
+.modal-dialog .container-fluid {
+    padding-right: 0px; 
+    padding-left: 0px; 
+}
 /* when hiding the picture */
 .ng-hide-add        { animation:1.5s lightSpeedOut ease; }
 

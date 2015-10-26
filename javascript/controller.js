@@ -79,7 +79,8 @@ angular.module('movieDBControllers',[])
           $location.path('/error/'+error.data.status_message+'/'+error.status);
         });
 })
-.controller('MovieDetailsController',function($scope, $routeParams, MovieListService, myMovieConfig,$http,$sce,TrailerService) {
+.controller('MovieDetailsController',function($scope, $routeParams, MovieListService, myMovieConfig,$http,$sce,
+  TrailerService) {
 // 
    $scope.title = 'Movie Details';
    $scope.rottenError = false;
@@ -91,6 +92,7 @@ angular.module('movieDBControllers',[])
           var movie=result.data;
           $scope.movie = movie; 
           url = myMovieConfig.rottenUri + '?i=' + movie.imdb_id + '&r=json&tomatoes=true';
+          $scope.animateIn = "animated zoomInRight"
           return MovieListService.getById(url);
           }
       ,
@@ -104,25 +106,65 @@ angular.module('movieDBControllers',[])
           // returning results from previous then
           $scope.rotten = result.data;
           console.dir(result.data)
-           //This is the callback function
-          var setData = function(trailer) {
-                $scope.trailerSrc = $sce.trustAsResourceUrl("//v.traileraddict.com/" + trailer);
-            }                 
-          TrailerService.get(setData,$scope.rotten.imdbID.slice(2)); //service requires callback
+          
+          //return NewTrailerService.get($scope.rotten.imdbID.slice(2));
+          TrailerService.get($scope.rotten.imdbID.slice(2),function(trailer) {                               
+                $scope.trailerSrc = $sce.trustAsResourceUrl("http://v.traileraddict.com/" + trailer);
+                console.log($scope.trailerSrc)
+               }); //service requires callback
+
+          $scope.animateIn = "animated zoomInLeft"
           }      
-       )
+       ,
+        function(error) { 
+          //won't route to error page as we have the movie data. Set flag to not show rotten data
+          $scope.rottenError = true;
+          $scope.rottenMessage = 'No Rotten Data Available';
+          }
+      )
+      .then(
+        function(result){          
+          // returning results from previous then
+          console.dir(result.data)
+          }      
+       ,
+        function(error) { 
+          //won't route to error page as we have the movie data. Set flag to not show rotten data
+          console.log(error);
+          }
+      )
       .catch(
         function(error) { 
           console.log('error', error)
-          $scope.rottenError = true;
-          $scope.rottenMessage = 'No Rotten Data Available'
+          $location.path('/error/'+error.data.status_message+'/'+error.status)          
           }
         );
+      $scope.fadeIn='out'
+      $scope.showTrailer = function() {
+        $scope.fadeIn = 'in'
+      }
+      $scope.closeModal = function() {
+        $scope.fadeIn = 'out'
+      }
 })
 .controller('MovieErrorController',function($scope, $routeParams) {
 // 
    $scope.message = $routeParams.message;
    $scope.status = $routeParams.status;
+})
+.controller('AboutController',function($scope) {
+// 
+   $scope.title = 'About Us';
+   $scope.maps = [{
+        address: 'Trinity College Dublin, Dublin',
+        zoom: 14,
+        width: 400      
+        },{
+        address: '51st Street, New York, New York',
+        zoom: 14,
+        width: 400      
+        }];
+  $scope.map = $scope.maps[0];
 })
 .controller('MenuController',function($scope, $location, $routeParams) {
 // 

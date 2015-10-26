@@ -2,9 +2,9 @@
 <div class='container-fluid'>
     <h1>{{title}}</h1>
     <div class='row'>          
-      <div class="col-md-3 col-sm-3 col-xs-12">
-        <img ng-show='!rottenError' ng-src="{{rotten.Poster}}" class='img-responsive'>
-        <img ng-show='rottenError' ng-src="http://image.tmdb.org/t/p/w370/{{movie.poster_path}}" class='img-responsive'>
+      <div class=" col-md-3 col-sm-3 col-xs-12">
+        <img ng-show='!rottenError' ng-src="{{rotten.Poster}}" class='img-responsive {{animateIn}}'>
+        <img ng-show='rottenError' ng-src="http://image.tmdb.org/t/p/w370/{{movie.poster_path}}" class='img-responsive {{animateIn}}'>
       </div>
       <div  class="col-md-7 col-sm-9 col-xs-12">
         <h1 class="">{{movie.title}}</h1>
@@ -13,12 +13,17 @@
         <h3>Tag Line</h3>
         <p>{{movie.tagline}}</p>
         <div class='row'>
-          <div class='col-md-10'
-          <p class="" style="color: black">Released: {{movie.release_date | date: 'mediumDate'}}</p>
+          <div class='col-md-10'>
+
+          <p class="" style="color: black">Released: {{movie.release_date | date: 'mediumDate'}}
+            <a href="http://www.imdb.com/title/{{movie.imdb_id}}">IMDB Details</a>
+
+          </p>
           </div>
           <div class='col-md-2'>
-            <button class='btn btn-primary' ng-show='trailer'   ng-click="trailer=false">Hide Trailer</button>
-            <button class='btn btn-primary' ng-show='!trailer'  ng-click="trailer=true">Show Trailer</button>
+           <!-- <button class='btn btn-primary' ng-show='trailer'   ng-click="trailer=false">Hide Trailer</button>
+            <button class='btn btn-primary' ng-show='!trailer'  ng-click="trailer=true">Show Trailer</button>-->
+            <button class='btn btn-primary' ng-click="showTrailer()">Show Trailer</button>
           </div>
         </div>
         <div class="row" ng-show="trailer">
@@ -54,4 +59,27 @@
     </div>
     <br/><br/>  
     <a href="#/popular"><button class="btn btn-primary">Return Movies</button></a><br/><br/>
+</div>
+<div id="myModal" class="modal fade {{fadeIn}}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="closeModal()" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Movie Trailer</h4>
+            </div>
+            <div class="modal-body">
+              <div class='container-fluid'>
+                <div class="row">                   
+                   <div class="col-md-12">
+                  <iframe  src="{{trailerSrc}}" width="560" height='315' allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no" autoplay="false"></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="closeModal()">Close</button>
+                
+            </div>
+        </div>
+    </div>
 </div>
